@@ -1,4 +1,4 @@
-color purple = #FF03F3;
+
 color red = #FF0808;
 color white = #FFFFFF;
 color regularButton = white ;
@@ -21,7 +21,7 @@ void quitButtonDraw() {
   }
 
   //Text in Quit Button
-  fill(#2C08FF); //Purple Ink, copied from Color Selector
+  fill(#2C08FF);
   textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: LEFT | CENTER | RIGHT & TOP | CENTER | BOTTOM | BASELINE
   textFont(titleFont, 10); //Change the number until it fits, largest font size
