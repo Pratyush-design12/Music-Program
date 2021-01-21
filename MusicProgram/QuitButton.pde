@@ -28,9 +28,3 @@ void quitButtonDraw() {
   text(title, width*15/16, height*0/16, width*1/16, height*1/16);
   fill(255); //Reset to white for rest of the program
 }
-
-void quitButtonMouseClicked() {
-  if (mouseX>width*15/16 && mouseX<width && mouseY>0 && mouseY<height*1/16) {
-    exit();
-  }
-}
