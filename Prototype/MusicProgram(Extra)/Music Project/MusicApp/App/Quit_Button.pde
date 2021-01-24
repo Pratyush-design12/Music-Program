@@ -1,5 +1,8 @@
-void quit_button() {
-  if (mouseX > quit_rect_x && mouseX < quit_rect_x + quit_rect_width && mouseY > quit_rect_y && mouseY < quit_rect_y + quit_rect_height) {
+void  quit_button() {
+ if ( mouseX>quitButtonX &&
+    mouseX<quitButtonX+quitButtonWidth &&
+    mouseY>quitButtonY &&
+    mouseY<quitButtonY+quitButtonHeight )
     exit();
-  }
+
 }

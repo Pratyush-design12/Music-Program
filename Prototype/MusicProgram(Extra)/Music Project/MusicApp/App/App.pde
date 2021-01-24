@@ -10,15 +10,7 @@ import java.util.*;
 
 //Global Variables
 
-float mini_back_x, mini_back_y, mini_back_width, mini_back_height;
-//
-float play_but_x, play_but_y, play_but_diameter;
-float play_tri_1_x, play_tri_1_y, play_tri_2_x, play_tri_2_y, play_tri_3_x, play_tri_3_y;
-float play_rect_x, play_rect_y, play_rect_width, play_rect_height;
-float play_rect_x_1, play_rect_y_1, play_rect_width_1, play_rect_height_1;
-//
-float pause_x_1, pause_y_1, pause_width, pause_height;
-float pause_x_2, pause_y_2;
+float buttonColour;
 //
 float next_but_x, next_but_y, next_but_diameter;
 float next_tri_1_x, next_tri_1_y, next_tri_2_x, next_tri_2_y, next_tri_3_x, next_tri_3_y;
@@ -31,11 +23,6 @@ float prev_tri_1_x, prev_tri_1_y, prev_tri_2_x, prev_tri_2_y, prev_tri_3_x, prev
 float prev_lin_x_1, prev_lin_y_1, prev_lin_width_1, prev_lin_height_1;
 float prev_rect_x, prev_rect_y, prev_rect_width, prev_rect_height;
 float prev_rect_x_1, prev_rect_y_1, prev_rect_width_1, prev_rect_height_1;
-//
-float loop_cir_x, loop_cir_y, loop_cir_diameter;
-float loop_rect_x, loop_rect_y, loop_rect_width, loop_rect_height;
-float loop_rect_x_1, loop_rect_y_1, loop_rect_width_1, loop_rect_height_1;
-String loop_all_text;
 //
 float desc_x, desc_y, desc_width, desc_height;
 float time_x, time_y, time_width, time_height;
@@ -64,6 +51,11 @@ float loop_1_cir_x, loop_1_cir_y, loop_1_cir_diameter;
 float loop_one_rect_x_1, loop_one_rect_y_1, loop_one_rect_width_1, loop_one_rect_height_1;
 String loop_one_text;
 //
+float loop_cir_x, loop_cir_y, loop_cir_diameter;
+float loop_rect_x, loop_rect_y, loop_rect_width, loop_rect_height;
+float loop_rect_x_1, loop_rect_y_1, loop_rect_width_1, loop_rect_height_1;
+String loop_all_text;
+//
 float mute_x, mute_y, mute_diameter;
 float mute_rect_x, mute_rect_y, mute_rect_width, mute_rect_height;
 float mute_rect_1_x, mute_rect_1_y, mute_rect_1_width, mute_rect_1_height;
@@ -81,8 +73,17 @@ String volume_down_text;
 //
 float volume_x, volume_y, volume_width, volume_height;
 String volume_text;
+float mini_back_x, mini_back_y, mini_back_width, mini_back_height;
 //
-float quit_rect_x, quit_rect_y, quit_rect_width, quit_rect_height;
+float play_but_x, play_but_y, play_but_diameter;
+float play_tri_1_x, play_tri_1_y, play_tri_2_x, play_tri_2_y, play_tri_3_x, play_tri_3_y;
+float play_rect_x, play_rect_y, play_rect_width, play_rect_height;
+float play_rect_x_1, play_rect_y_1, play_rect_width_1, play_rect_height_1;
+//
+float pause_x_1, pause_y_1, pause_width, pause_height;
+float pause_x_2, pause_y_2;
+//
+float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 String quit_text;
 //
 String list_1;
@@ -140,11 +141,10 @@ String absolute;
 ControlP5 cp5;
 ControlFont cf1;
 
-Minim  minim; //creates object to access all functions
+Minim  minim;
 AudioPlayer[] song = new AudioPlayer[number_of_songs]; 
 AudioMetaData[] song_meta_data = new AudioMetaData[number_of_songs];
-//Gain  gain;
-//AudioOutput out;
+
 
 void setup() {
 
@@ -173,6 +173,7 @@ void draw() {
   wave_form();
   volume();
 }
+
 
 void mousePressed() {
   play_button();

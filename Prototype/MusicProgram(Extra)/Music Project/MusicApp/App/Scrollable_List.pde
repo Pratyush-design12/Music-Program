@@ -7,7 +7,7 @@ void scrollable_list() {
   list_4 = song_meta_data[3].fileName();
   list_5 = song_meta_data[4].fileName();
   List l = Arrays.asList(list_1, list_2, list_3, list_4, list_5);
-  cp5.addScrollableList("Music List")
+  cp5.addScrollableList("SONGS LIST")
     .setPosition(displayWidth*13/45, displayHeight*1/30)
     .setSize(800, 400)
     .setBarHeight(100)
@@ -17,8 +17,8 @@ void scrollable_list() {
     .setColorBackground(color(255))
     .setColorActive(color(240))
     .setColorForeground(color(220))
-    .setColorValueLabel(color(20))
-    .setColorCaptionLabel(color(20))
-    .setType(ScrollableList.LIST) // currently supported DROPDOWN and LIST
+    .setColorValueLabel(color(0))
+    .setColorCaptionLabel(color(0))
+    .setType(ScrollableList.LIST)
     ;
 }

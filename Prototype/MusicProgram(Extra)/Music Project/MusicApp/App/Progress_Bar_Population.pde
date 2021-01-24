@@ -1,8 +1,6 @@
 void progress_bar_population() {
   stroke(0);
   fill(#FFFFFF);
-  //rect(progress_bar_x_start, progress_bar_y, progress_bar_width, progress_bar_height);
-  //background(#FFFFFF);
   noStroke();
   rect(progress_back_x, progress_back_y, progress_back_width, progress_back_height);
   fill(255); 

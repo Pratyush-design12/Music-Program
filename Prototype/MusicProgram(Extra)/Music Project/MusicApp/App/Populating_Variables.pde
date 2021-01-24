@@ -221,10 +221,10 @@ void populating_variables() {
 
 
   //Quit Button
-  quit_rect_x = displayWidth*37/40;
-  quit_rect_y = displayHeight*1/30;
-  quit_rect_width = displayWidth*1/20;
-  quit_rect_height = displayHeight*1/30;
+  quitButtonX = displayWidth*37/40;
+  quitButtonY = displayHeight*1/30;
+  quitButtonWidth = displayWidth*1/20;
+  quitButtonHeight = displayHeight*1/30;
 
 
   //Mute Button
