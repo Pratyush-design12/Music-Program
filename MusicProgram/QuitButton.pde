@@ -1,5 +1,5 @@
 
-color red = #FF0808;
+/*color red = #FF0808;
 color white = #FFFFFF;
 color regularButton = white ;
 color hoverOverButton = red;
@@ -27,4 +27,4 @@ void quitButtonDraw() {
   textFont(titleFont, 10); //Change the number until it fits, largest font size
   text(title, width*15/16, height*0/16, width*1/16, height*1/16);
   fill(255); //Reset to white for rest of the program
-}
+}*/

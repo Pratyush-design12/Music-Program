@@ -57,10 +57,10 @@ boolean recalculate_time;
 
 void Setup() {
   
-  fullScreen();
+  size(600,700);
   pic1 = loadImage("../BackgroundMusic&SoundEffects/download.png");
   population();
-  quitButtonSetup();
+  //quitButtonSetup();
   GUI_Setup();
   
 
@@ -112,10 +112,6 @@ for (int i=currentSong; i<numberOfSongs; i++) {
 void draw () {
   
 
-  timer();
-  selected();
-  wave_form();
-  volume();
 
 }
 
@@ -123,13 +119,5 @@ void mousePressed() {
    if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) exit();
   //
   
-  play_button();
-  next_button();
-  prev_button();
-  forward_button();
-  rewind_button();
-  mute_button();
-  volume_up();
-  volume_down();
 
 }
