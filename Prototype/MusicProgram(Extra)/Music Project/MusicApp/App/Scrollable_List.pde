@@ -6,7 +6,12 @@ void scrollable_list() {
   list_3 = song_meta_data[2].fileName();
   list_4 = song_meta_data[3].fileName();
   list_5 = song_meta_data[4].fileName();
-  List l = Arrays.asList(list_1, list_2, list_3, list_4, list_5);
+  list_6 = song_meta_data[5].fileName();
+  list_7 = song_meta_data[6].fileName();
+  list_8 = song_meta_data[7].fileName();
+  list_9 = song_meta_data[8].fileName();
+  list_10 = song_meta_data[9].fileName();
+  List l = Arrays.asList(list_1, list_2, list_3, list_4, list_5, list_6, list_7, list_8, list_9, list_10);
   cp5.addScrollableList("SONGS LIST")
     .setPosition(displayWidth*13/45, displayHeight*1/30)
     .setSize(800, 400)

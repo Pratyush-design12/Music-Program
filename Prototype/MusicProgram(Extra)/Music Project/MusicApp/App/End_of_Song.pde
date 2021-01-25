@@ -36,7 +36,51 @@ void  end_of_song() {
       song[currentSong].play();
       need_meta_data = true;
     }
-    if (song[4].position() >= song[4].length()-800) {
+        if (song[4].position() >= song[4].length()-800) {
+      reset_time = true;
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      currentSong = 5;
+      song[currentSong].rewind();
+      song[currentSong].play();
+      need_meta_data = true;
+    }
+    if (song[5].position() >= song[5].length()-800) {
+      reset_time = true;
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      currentSong = 6;
+      song[currentSong].rewind();
+      song[currentSong].play();
+      need_meta_data = true;
+    }
+    if (song[6].position() >= song[6].length()-800) {
+      reset_time = true;
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      currentSong = 7;
+      song[currentSong].rewind();
+      song[currentSong].play();
+      need_meta_data = true;
+    }    if (song[7].position() >= song[7].length()-800) {
+      reset_time = true;
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      currentSong = 8;
+      song[currentSong].rewind();
+      song[currentSong].play();
+      need_meta_data = true;
+    }
+    if (song[8].position() >= song[8].length()-800) {
+      reset_time = true;
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      currentSong = 9;
+      song[currentSong].rewind();
+      song[currentSong].play();
+      need_meta_data = true;
+    }
+    if (song[9].position() >= song[9].length()-800) {
       if (loop_all == true) {
         reset_time = true;
         song[currentSong].pause();
@@ -47,6 +91,7 @@ void  end_of_song() {
         need_meta_data = true;
       }
     }
+    
   }
   if (loop_one == true) {
     if (song[currentSong].position() >= song[currentSong].length()-800){

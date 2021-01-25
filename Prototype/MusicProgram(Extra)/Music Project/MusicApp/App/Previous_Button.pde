@@ -54,9 +54,9 @@ void prev_button() {
       if (colour == black) {
         reset_time = true;
         song[currentSong].pause();
-        song[4].rewind();
-        song[4].play();
-        currentSong = 4;
+        song[9].rewind();
+        song[9].play();
+        currentSong = 9;
         need_meta_data = true;
         end_of_list = false;
       }
@@ -69,8 +69,8 @@ void prev_button() {
         reset_time = true;
         song[currentSong].pause();
         currentSong = 4;
-        song[4].rewind();
-        song[4].play();
+        song[9].rewind();
+        song[9].play();
         need_meta_data = true;
         end_of_list = false;
       }

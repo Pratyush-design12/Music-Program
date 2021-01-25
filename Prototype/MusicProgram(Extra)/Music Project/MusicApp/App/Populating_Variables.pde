@@ -308,9 +308,9 @@ void populating_variables() {
 
   loop_all_text = "LOOP ALL";
   loop_one_text = "LOOP ONE";
-  quit_text = "QUIT";
+  quit_text = "X";
   mute_text = "MUTE";
   volume_up_text = "+";
-  volume_down_text = "-";
+  volume_down_text = "--";
   n = 0;
 }

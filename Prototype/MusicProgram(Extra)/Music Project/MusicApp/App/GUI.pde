@@ -1,12 +1,12 @@
 void music_player_setup() {
 
-  fill(black);
+  fill(#F54600);
   circle(play_but_x, play_but_y, play_but_diameter);
   rect(play_rect_x_1, play_rect_y_1, play_rect_width_1, play_rect_height_1);
   fill(white);
   triangle(play_tri_1_x, play_tri_1_y, play_tri_2_x, play_tri_2_y, play_tri_3_x, play_tri_3_y);
 
-  fill(black);
+  fill(#F54600);
   circle(forward_cir_x, forward_cir_y, forward_cir_diameter);
   fill(white);
   
@@ -16,7 +16,7 @@ void music_player_setup() {
 
   //Rewind button
   
-  fill(black);
+  fill(#F54600);
   circle(rev_cir_x, rev_cir_y, rev_cir_diameter);
   fill(white);
   triangle(rev_tri_1_x, rev_tri_1_y, rev_tri_2_x, rev_tri_2_y, rev_tri_3_x, rev_tri_3_y);
@@ -24,7 +24,7 @@ void music_player_setup() {
   rect(rev_lin_x_1, rev_lin_y_1, rev_lin_width, rev_lin_height);
 
   //Next
-  fill(black);
+  fill(#F54600);
   circle(next_but_x, next_but_y, next_but_diameter);
   fill(white);
   rect(next_lin_x_1, next_lin_y_1, next_lin_width, next_lin_height);
@@ -32,7 +32,7 @@ void music_player_setup() {
 
   //Previous
   
-  fill(black);
+  fill(#F54600);
   circle(prev_but_x, prev_but_y, prev_but_diameter);
   fill(white);
   triangle(prev_tri_1_x, prev_tri_1_y, prev_tri_2_x, prev_tri_2_y, prev_tri_3_x, prev_tri_3_y);
@@ -40,7 +40,7 @@ void music_player_setup() {
 
   //Loop one
 
-  fill(black);
+  fill(#F54600);
   circle(loop_1_cir_x, loop_1_cir_y, loop_1_cir_diameter);
   //rect(loop_one_rect_x_1, loop_one_rect_y_1, loop_one_rect_width_1, loop_one_rect_height_1);
   fill(white);
@@ -50,16 +50,16 @@ void music_player_setup() {
 
   //Loop all
 
-  fill(black);
+  fill(#F54600);
   circle(loop_cir_x, loop_cir_y, loop_cir_diameter);
   textFont(font, 15); 
   textAlign(CENTER, CENTER);
-  fill(black);
+  fill(#F54600);
   text(loop_all_text, loop_rect_x, loop_rect_y, loop_rect_width, loop_rect_height);
 
 
   //Quit button
-  fill(black);
+  fill(#F54600);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
   fill(white);
   textFont(font, 20); 
@@ -71,13 +71,13 @@ void music_player_setup() {
   textFont(font, 25); 
   textAlign(CENTER, CENTER);
   desc_text = song_meta_data[currentSong].fileName();
-  fill(black);
+  fill(#F54600);
   text(desc_text, desc_x, desc_y, desc_width, desc_height);
 
 
   //Mute 
  
-  fill(black);
+  fill(#F54600);
   circle(mute_x, mute_y, mute_diameter);
   fill(white);
   textFont(font, 15); 
@@ -87,7 +87,7 @@ void music_player_setup() {
 
   //Volume Up
  
-  fill(black);
+  fill(#F54600);
   circle(volume_up_x, volume_up_y, volume_up_diameter);
   fill(white);
  
@@ -97,7 +97,7 @@ void music_player_setup() {
 
   //Volume Down
 
-  fill(black);
+  fill(#F54600);
   circle(volume_down_x, volume_down_y, volume_down_diameter);
   fill(white);
   textFont(font, 25); 

@@ -14,7 +14,7 @@ void play_button() {
           song[currentSong].play();
           need_meta_data = true;
         } else if (loop_all == true) {
-          if (currentSong == 4) {
+          if (currentSong == 9) {
             reset_time = true;
             currentSong = 0;
             song[0].play();  
@@ -39,7 +39,7 @@ void play_button() {
           song[currentSong].play();
           need_meta_data = true;
         } else if (loop_all == true) {
-          if (currentSong == 4) {
+          if (currentSong == 9) {
             reset_time = true;
             currentSong = 0;
             song[0].play();  

@@ -91,6 +91,11 @@ String list_2;
 String list_3;
 String list_4;
 String list_5;
+String list_6;
+String list_7;
+String list_8;
+String list_9;
+String list_10;
 //
 float colour;
 //
@@ -108,7 +113,7 @@ boolean selected;
 boolean loop_one;
 boolean loop_selected;
 //
-int number_of_songs = 5;
+int number_of_songs = 10;
 int number_of_acc_songs;
 int currentSong = 0;
 int song_playing = 0;
