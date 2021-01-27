@@ -6,10 +6,13 @@ import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
-
+import java.util.*;
 
 //Global Variables
 
+float max_gain = 0;
+float volume = 0;
+static final int FADE = 2500;
 Minim minim;
 int numberOfSongs = 10;
 AudioPlayer[] song = new AudioPlayer[numberOfSongs];
@@ -28,10 +31,14 @@ float fastA1X, fastA1Y, fastA2X, fastA2Y, fastA3X, fastA3Y, fastB1X, fastB1Y, fa
 float rewA1X, rewA1Y, rewA2X, rewA2Y, rewA3X, rewA3Y, rewB1X, rewB1Y, rewB2X, rewB2Y, rewB3X, rewB3Y;
 float nextA1X, nextA1Y, nextA2X, nextA2Y, nextA3X, nextA3Y, nextBX, nextBY, nextBW, nextBH;
 float backA1X, backA1Y, backA2X, backA2Y, backA3X, backA3Y, backBX, backBY, backBW, backBH,timeSX, timeSY, timeSW, timeSH, muteX, muteY, muteW, muteH;
+float volumerectX, volumerectY, volumerectW, volumerectH, downvolumerectX, downvolumerectY, downvolumerectW, downvolumerectH;
+float song1X, song1Y, song1W, song1H, song2X, song2Y, song2W, song2H, song3X, song3Y, song3W, song3H, song4X, song4Y, song4W, song4H;
+float song5X, song5Y, song5W, song5H, song6X, song6Y, song6W, song6H, song7X, song7Y, song7W, song7H, song8X, song8Y, song8W, song8H;
+float song9X, song9Y, song9W, song9H, song10X, song10Y, song10W, song10H;
 int loopIntNum = 1;
-
+float gain = 15.0;
 AudioPlayer snip;
-
+int i;
 //LOGO 
 float imgX1, imgY1, imgWidth1, imgHeight1, ImageWidthRatio1, ImageHeightRatio1;
 PImage img1;
@@ -133,12 +140,55 @@ void setup() {
   textDraw3();
   stroke(1);
     
+    noStroke();
+    fill(white);
+    rect(volumerectX, volumerectY, volumerectW, volumerectH);
+    textDraw6();
+    
+  /*  fill(white);
+    rect(downvolumerectX, downvolumerectY, downvolumerectW, downvolumerectH);
+    textDraw7();
+    stroke(1);*/
+    
+   strokeWeight(2);
+    fill(white);
+  rect(song1X, song1Y, song1W, song1H);
+  textDraw8();
+  fill(white);
+  rect(song2X, song2Y, song2W, song2H);
+  textDraw9();
+  fill(white);
+  rect(song3X, song3Y, song3W, song3H);
+  textDraw10();
+  fill(white);
+  rect(song4X, song4Y, song4W, song4H);
+  textDraw11();
+  fill(white);
+  rect(song5X, song5Y, song5W, song5H);
+  textDraw12();
+  fill(white);
+  rect(song6X, song6Y, song6W, song6H);
+  textDraw13();
+  fill(white);
+  rect(song7X, song7Y, song7W, song7H);
+  textDraw14();
+  fill(white);
+  rect(song8X, song8Y, song8W, song8H);
+  textDraw15();
+  fill(white);
+  rect(song9X, song9Y, song9W, song9H);
+  textDraw16();
+  fill(white);
+  rect(song10X, song10Y, song10W, song10H);
+  textDraw17();
+  
   }
 
 
 void draw() {
   
-
+  Visualizer();
+  
   noStroke();
   fill(#FC7105);
   rect(timeSX, timeSY, timeSW, timeSH);
@@ -175,8 +225,7 @@ void draw() {
   textDraw(); 
   fill(0);
   
-  
-    if (mouseX>muteX && mouseX<muteX+muteW && mouseY>muteY && mouseY<muteY+muteH) {
+   if (mouseX>muteX && mouseX<muteX+muteW && mouseY>muteY && mouseY<muteY+muteH) {
     buttonC = grey;
   } else {
     buttonC = white;
@@ -186,6 +235,7 @@ void draw() {
   rect(muteX, muteY, muteW, muteH);
   textDraw4();
   stroke(1);
+  
   
   if (mouseX>playrecX && mouseX<playrecX+playrecW && mouseY>playrecY && mouseY<playrecY+playrecH) {
     buttonC = grey;
@@ -290,8 +340,18 @@ if (mouseX>stopX && mouseX<stopX+stopW && mouseY>stopY && mouseY<stopY+stopH) {
 
 }
 void mousePressed() {
+  
   if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) exit();
 
+  //if (mouseX>ShuffleX && mouseX<ShuffleX+ShuffleW && mouseY>ShuffleY && mouseY<ShuffleY+ShuffleH) {
+    // Collections.shuffle ( currentSong );
+  //}
+
+
+     if (mouseX>volumerectX && mouseX<volumerectX+volumerectW && mouseY>volumerectY && mouseY<volumerectY+volumerectH) {
+       gain = gain+song[currentSong].getGain();   
+       song[currentSong].setGain(gain); //Will amply not control
+     }
     
     if (mouseX>muteX && mouseX<muteX+muteW && mouseY>muteY && mouseY<muteY+muteH) {
     if ( song[currentSong].isMuted() ) {

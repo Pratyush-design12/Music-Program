@@ -127,10 +127,10 @@ void population() {
   muteW = playrecW;
   muteH = height*0.5/15;
   //
-  timeSX = width*3.1/15;
+  timeSX = width*2.8/15;
   timeSY = height*9.7/15;
-  timeSW = width*5.4/15;
-  timeSH = height*0.5/15;
+  timeSW = width*5.2/15;
+  timeSH = height*0.3/15;
   
   ShuffleX = width*6.8/15;
   ShuffleY = height*10.3/15;
@@ -141,5 +141,63 @@ void population() {
   ShuffleCY = height*10.67/15;
   ShuffleCD = height*0.72/15;
   
+  volumerectX =  width*2.8/15;
+  volumerectY =  height*9.2/15;
+  volumerectW =  width*0.5/15;
+  volumerectH =  height*0.5/15;
   
+  downvolumerectX =  width*7.2/15;
+  downvolumerectY =  height*9.2/15;
+  downvolumerectW =  width*0.5/15;
+  downvolumerectH =  height*0.5/15;
+  
+  song1X = width*8/15;
+  song1Y = height*2.5/15;
+  song1W = width*4.7/15;
+  song1H = height*1/15;
+  //
+  song2X = width*8/15;
+  song2Y = height*3.5/15;
+  song2W = width*4.7/15;
+  song2H = height*1/15;
+  //
+  song3X = width*8/15;
+  song3Y = height*4.5/15;
+  song3W = width*4.7/15;
+  song3H = height*1/15;
+  //
+  song4X = width*8/15;
+  song4Y = height*5.5/15;
+  song4W = width*4.7/15;
+  song4H = height*1/15;
+  //
+  song5X = width*8/15;
+  song5Y = height*6.5/15;
+  song5W = width*4.7/15;
+  song5H = height*1/15;
+  //
+  song6X = width*8/15;
+  song6Y = height*7.5/15;
+  song6W = width*4.7/15;
+  song6H = height*1/15;
+  //
+  song7X = width*8/15;
+  song7Y = height*8.5/15;
+  song7W = width*4.7/15;
+  song7H = height*1/15;
+  //
+  song8X = width*8/15;
+  song8Y = height*9.5/15;
+  song8W = width*4.7/15;
+  song8H = height*1/15;
+  //
+  song9X = width*8/15;
+  song9Y = height*10.5/15;
+  song9W = width*4.7/15;
+  song9H = height*1/15;
+  //
+  song10X = width*8/15;
+  song10Y = height*11.5/15;
+  song10W = width*4.7/15;
+  song10H = height*1/15;
 }
