@@ -42,6 +42,7 @@ int i;
 //LOGO 
 float imgX1, imgY1, imgWidth1, imgHeight1, ImageWidthRatio1, ImageHeightRatio1;
 PImage img1;
+boolean shuffle = true;
 
 
 int loopBegin;
@@ -343,10 +344,13 @@ void mousePressed() {
   
   if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) exit();
 
-  //if (mouseX>ShuffleX && mouseX<ShuffleX+ShuffleW && mouseY>ShuffleY && mouseY<ShuffleY+ShuffleH) {
-    // Collections.shuffle ( currentSong );
-  //}
-
+  if (mouseX>ShuffleX && mouseX<ShuffleX+ShuffleW && mouseY>ShuffleY && mouseY<ShuffleY+ShuffleH) {
+      if ( song[currentSong].isPlaying() ) {
+    if (shuffle) currentSong = int ( random(0, numberOfSongs) );
+    } else {
+      if (shuffle) currentSong = int ( random(0, numberOfSongs) );
+      } 
+  }
 
      if (mouseX>volumerectX && mouseX<volumerectX+volumerectW && mouseY>volumerectY && mouseY<volumerectY+volumerectH) {
        gain = gain+song[currentSong].getGain();   
@@ -427,7 +431,6 @@ if (mouseX>nextrecX && mouseX<nextrecX+nextrecW && mouseY>nextrecY && mouseY<nex
       }
     }
   }
-
 }
 
 
