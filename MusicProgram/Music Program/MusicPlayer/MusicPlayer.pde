@@ -1,3 +1,5 @@
+import controlP5.*;
+
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -7,6 +9,7 @@ import ddf.minim.ugens.*;
 
 
 //Global Variables
+
 Minim minim;
 int numberOfSongs = 10;
 AudioPlayer[] song = new AudioPlayer[numberOfSongs];
@@ -19,18 +22,30 @@ float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 float timeSTX, timeSTY, timeSTW, timeSTH;
 float playButtonX, playButtonY, playButtonWidth, playButtonHeight, play1X, play1Y, play2X, play2Y, play3X, play3Y, playCX, playCY, playCD ;
 float backrecX, backrecY, backrecW, backrecH, nextrecX, nextrecY, nextrecW, nextrecH, looprecX, looprecY, looprecW, looprecH, loopX, loopY, loopD, fastrecX, fastrecY, fastrecW, fastrecH, rewrecX, rewrecY, rewrecW, rewrecH, playrecX, playrecY, playrecW, playrecH;
-float muteX, muteY, muteW, muteH;
+float Mute1X, Mute1Y, Mute1W, Mute1H, stopX, stopY, stopW, stopH, ShuffleX, ShuffleY, ShuffleW, ShuffleH, ShuffleCX, ShuffleCY ,ShuffleCD;
 float backgroundX, backgroundY, backgroundW, backgroundH;
+float fastA1X, fastA1Y, fastA2X, fastA2Y, fastA3X, fastA3Y, fastB1X, fastB1Y, fastB2X, fastB2Y, fastB3X, fastB3Y;
+float rewA1X, rewA1Y, rewA2X, rewA2Y, rewA3X, rewA3Y, rewB1X, rewB1Y, rewB2X, rewB2Y, rewB3X, rewB3Y;
+float nextA1X, nextA1Y, nextA2X, nextA2Y, nextA3X, nextA3Y, nextBX, nextBY, nextBW, nextBH;
+float backA1X, backA1Y, backA2X, backA2Y, backA3X, backA3Y, backBX, backBY, backBW, backBH,timeSX, timeSY, timeSW, timeSH, muteX, muteY, muteW, muteH;
+int loopIntNum = 1;
+
+AudioPlayer snip;
 
 //LOGO 
 float imgX1, imgY1, imgWidth1, imgHeight1, ImageWidthRatio1, ImageHeightRatio1;
 PImage img1;
+
+
+int loopBegin;
+int loopEnd;
 
 void setup() {
   
   background(#A7A5A2);
   img1 = loadImage("../Logo/download.png");
   fullScreen();
+  textSetup();
   population();
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder
   
@@ -89,24 +104,54 @@ void setup() {
     
   }
   
+    fill(#FC7105);
+  rect(backgroundX, backgroundY, backgroundW, backgroundH);
+  
+  
   fill(white);
   strokeWeight(6);
   rect(imgX1, imgY1, imgWidth1, imgHeight1);
   image(img1, imgX1, imgY1, imgWidth1, imgHeight1);
+  strokeWeight(6);
   rect(timeSTX, timeSTY, timeSTW, timeSTH);
   
-  fill(0);
-  rect(looprecX, looprecY, looprecW, looprecH);
+  strokeWeight(3);
   fill(white);
+  rect(looprecX, looprecY, looprecW, looprecH);
+  noStroke();
+  fill(0);
   ellipse(loopX, loopY, loopD, loopD);
-  //textDraw2();
-  
+  textDraw2();
+  stroke(1);
+    
+  strokeWeight(3);
+  fill(white);
+  rect(ShuffleX, ShuffleY,ShuffleW, ShuffleH);
+  noStroke();
+  fill(black);
+  ellipse(ShuffleCX, ShuffleCY ,ShuffleCD, ShuffleCD);
+  textDraw3();
+  stroke(1);
+    
   }
 
 
 void draw() {
   
-  Music_Visualzer();
+
+  noStroke();
+  fill(#FC7105);
+  rect(timeSX, timeSY, timeSW, timeSH);
+  stroke(1);
+  
+  strokeWeight(1);
+  fill(black);
+  rect(width*4.2/15, height*9.12/15, width*2/15, height*0.6/15);
+  fill(white); 
+  textAlign (CENTER, CENTER); 
+  textFont(titlefont, 15); 
+  text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
+  fill(255);
   
   fill(white);
   strokeWeight(2);
@@ -114,9 +159,10 @@ void draw() {
   fill(#FF6F00);
   float posx = map(song[currentSong].position(), 115, song[currentSong].length(), 375, 985);
   strokeWeight(10);
+  strokeCap(ROUND);
   line(posx, 712, 985, 712);
-  strokeWeight(5);
-  ellipse(posx, 712, 20, 20);
+  strokeWeight(1);
+  ellipse(posx, 712, 10, 10);
   
     if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) { 
     buttonC = red;
@@ -126,29 +172,208 @@ void draw() {
   strokeWeight(1);
   fill(buttonC);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
-  //textDraw(); 
+  textDraw(); 
+  fill(0);
+  
+  
+    if (mouseX>muteX && mouseX<muteX+muteW && mouseY>muteY && mouseY<muteY+muteH) {
+    buttonC = grey;
+  } else {
+    buttonC = white;
+  }
+  fill(white);
+  noStroke();
+  rect(muteX, muteY, muteW, muteH);
+  textDraw4();
+  stroke(1);
   
   if (mouseX>playrecX && mouseX<playrecX+playrecW && mouseY>playrecY && mouseY<playrecY+playrecH) {
     buttonC = grey;
   } else {
     buttonC = white;
   }
+  strokeWeight(3);
   fill(white);
   rect(playrecX, playrecY, playrecW, playrecH); 
+  strokeWeight(1);
   fill(black);
+  noStroke();
   ellipse(playCX, playCY, playCD, playCD);
   fill(buttonC);
   triangle(play1X, play1Y, play2X, play2Y, play3X, play3Y);
+  stroke(1);
   
-}
+  
+   if (mouseX>looprecX && mouseX<looprecX+looprecW && mouseY>looprecY && mouseY<looprecY+looprecH) {
+    buttonC = grey;
+  } else {
+    buttonC = black;
+  }
+  strokeWeight(3);
+  fill(white);
+  rect(looprecX, looprecY, looprecW, looprecH);
+  fill(black);
+  noStroke();
+  ellipse(loopX, loopY, loopD, loopD);
+  textDraw2();
+  stroke(1);
 
+
+if (mouseX>fastrecX && mouseX<fastrecX+fastrecW && mouseY>fastrecY && mouseY<fastrecY+fastrecH) {
+    buttonC = grey;
+  } else {
+    buttonC = white;
+  }
+  
+  fill(black);
+  rect(fastrecX, fastrecY, fastrecW, fastrecH);
+  fill(buttonC);
+  noStroke();
+  triangle(fastA1X, fastA1Y, fastA2X, fastA2Y, fastA3X, fastA3Y);
+  fill(buttonC);
+  noStroke();
+  triangle(fastB1X, fastB1Y, fastB2X, fastB2Y, fastB3X, fastB3Y);
+  stroke(1);
+  if (mouseX>rewrecX && mouseX<rewrecX+rewrecW && mouseY>rewrecY && mouseY<rewrecY+rewrecH) {
+    buttonC = grey;
+  } else {
+    buttonC = white;
+  }
+  fill(black);
+  rect(rewrecX, rewrecY, rewrecW, rewrecH);
+  fill(buttonC);
+  noStroke();
+  triangle(rewA1X, rewA1Y, rewA2X, rewA2Y, rewA3X, rewA3Y);
+  fill(buttonC);
+  triangle(rewB1X, rewB1Y, rewB2X, rewB2Y, rewB3X, rewB3Y);
+  stroke(1);
+  //
+  if (mouseX>nextrecX && mouseX<nextrecX+nextrecW && mouseY>nextrecY && mouseY<nextrecY+nextrecH) {
+    buttonC = grey;
+  } else {
+    buttonC = white;
+  }
+  fill(black);
+  rect(nextrecX, nextrecY, nextrecW, nextrecH);
+  fill(buttonC); 
+  noStroke();
+  triangle(nextA1X, nextA1Y, nextA2X, nextA2Y, nextA3X, nextA3Y);
+  stroke(1);
+  fill(buttonC);
+  rect(nextBX, nextBY, nextBW, nextBH);
+  
+  if (mouseX>backrecX && mouseX<backrecX+backrecW && mouseY>backrecY && mouseY<backrecY+backrecH) {
+    buttonC = grey;
+  } else {
+    buttonC = white;
+  }
+
+  fill(black);
+  rect(backrecX, backrecY, backrecW, backrecH);
+  fill(buttonC);
+  noStroke();
+  triangle(backA1X, backA1Y, backA2X, backA2Y, backA3X, backA3Y);
+  stroke(1);
+  fill(buttonC);
+  rect(backBX, backBY, backBW, backBH);
+  
+if (mouseX>stopX && mouseX<stopX+stopW && mouseY>stopY && mouseY<stopY+stopH) {
+    buttonC = grey;
+  } else {
+    buttonC = white;
+  }
+  fill(buttonC);
+  noStroke();
+  rect(stopX, stopY, stopW, stopH);
+  textDraw5();
+ stroke(1);
+
+}
 void mousePressed() {
   if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) exit();
+
+    
+    if (mouseX>muteX && mouseX<muteX+muteW && mouseY>muteY && mouseY<muteY+muteH) {
+    if ( song[currentSong].isMuted() ) {
+      song[currentSong].unmute();
+    } else {
+      song[currentSong].mute();
+    }
+  }
+
+if (mouseX>playrecX && mouseX<playrecX+playrecW && mouseY>playrecY && mouseY<playrecY+playrecH) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+    } else if ( song[currentSong].position() == song[currentSong].length() ) {
+      song[currentSong].rewind();
+      song[currentSong].play();
+    } else {
+      song[currentSong].play();
+    }
+  }
+  //
+  if (mouseX>fastrecX && mouseX<fastrecX+fastrecW && mouseY>fastrecY && mouseY<fastrecY+fastrecH) song[currentSong].skip(1000);
+  //
+  if (mouseX>rewrecX && mouseX<rewrecX+rewrecW && mouseY>rewrecY && mouseY<rewrecY+rewrecH) song[currentSong].skip(-1000); 
+  //
+  if (mouseX>stopX && mouseX<stopX+stopW && mouseY>stopY && mouseY<stopY+stopH) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+    } else { 
+      song[currentSong].rewind();
+    }
+  }
+  //
+  if (mouseX>looprecX && mouseX<looprecX+looprecW && mouseY>looprecY && mouseY<looprecY+looprecH) song[currentSong].loop(loopIntNum);
+  //
+
+if (mouseX>nextrecX && mouseX<nextrecX+nextrecW && mouseY>nextrecY && mouseY<nextrecY+nextrecH) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs-1 ) {
+        currentSong = numberOfSongs - numberOfSongs;
+      } else {
+        currentSong++;
+      }
+      song[currentSong].play();
+    } else { 
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs-1 ) {
+        currentSong = numberOfSongs - numberOfSongs;
+      } else {
+        currentSong++;
+      }
+    }
+  }
+  //
+  if (mouseX>backrecX && mouseX<backrecX+backrecW && mouseY>backrecY && mouseY<backrecY+backrecH) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs-1;
+      } else {
+        currentSong--;
+      }
+      song[currentSong].play();
+    } else { 
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs-1;
+      } else {
+        currentSong--;
+      }
+    }
+  }
+
 }
 
-void mouseClicked() {
-  
-  quitButtonMouseClicked();
-  musicPlayerButton();
-  
+
+
+
+void keyPressed()
+{
+  //snip.loop(2);
 }

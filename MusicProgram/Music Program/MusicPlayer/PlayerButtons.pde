@@ -1,9 +1,1 @@
 
-void musicPlayerButton() {
-
-}
-
-
-void quitButtonMouseClicked() {
-
-}
